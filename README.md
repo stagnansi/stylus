@@ -93,4 +93,4 @@ I don't. But you can.
 
 ## License
 
-MIT. Do whatever.
+CC0 1.0 Universal. Public domain. No rights reserved.
