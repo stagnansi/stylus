@@ -34,3 +34,63 @@ wrote one stylesheet and let it handle the rest.
    want to install it. Say yes.
 
 ## Repo structure
+
+```
+.
+├── styles/
+│   ├── global.user.css          # Every website, no exceptions
+│   ├── github.user.css          # Just GitHub
+│   └── stackoverflow.user.css   # Just Stack Overflow
+├── snippets/
+│   └── font-face-import.css     # Google Fonts, if you're into that
+└── README.md
+```
+
+## What it looks like
+
+```css
+@-moz-document regexp(".*") {
+  :root {
+    --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+    --font-mono: "IBM Plex Mono", "Fira Code", monospace;
+  }
+
+  body, input, button, select, textarea {
+    font-family: var(--font-sans) !important;
+  }
+
+  code, pre, kbd, samp, tt {
+    font-family: var(--font-mono) !important;
+  }
+}
+```
+
+Simple. Works.
+
+## Font loading
+
+If you don't want to install fonts locally, add this to the top of your
+stylesheet:
+
+```css
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=IBM+Plex+Mono&display=swap');
+```
+
+I don't. But you can.
+
+## Customization
+
+- Change `--font-sans` and `--font-mono` to whatever you want.
+- Remove `@-moz-document` blocks to exclude specific domains.
+- Fork it and make it yours.
+
+## Fallbacks
+
+| Role       | Primary        | Fallback                           |
+|------------|----------------|------------------------------------|
+| Sans-serif | Inter          | system-ui, -apple-system, Roboto   |
+| Monospace  | IBM Plex Mono  | Fira Code, JetBrains Mono, Menlo   |
+
+## License
+
+MIT. Do whatever.
