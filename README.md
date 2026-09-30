@@ -13,19 +13,30 @@ Default fonts are fine. But they're not yours. If you spend hours staring at
 text, you might as well make it look good.
 
 I got tired of every website having its own opinion about typography. So I
-wrote one stylesheet and let it handle the rest.
+wrote a stylesheet for each one. Per-site. No global override. Because global
+selectors break more than they fix.
 
 ## What it does
 
-- Swaps `sans-serif` across the board for Inter. Falls back to `InterVariable`
-  when variable font support is available. Uses `InterDisplay` for headings.
-- Swaps `monospace` across the board for IBM Plex Mono.
-- Targets the usual suspects: `code`, `pre`, `kbd`, `samp`, `tt`, plus
-  CodeMirror internals (`cm-editor`, `cm-scroller`, `cm-content`, `cm-line`,
-  `cm-gutters`), `contenteditable` regions, and GitHub's blob/code viewer
-  classes.
-- Includes some hand-tuned site-specific class selectors. Because some sites
-  just won't cooperate.
+- Swaps `sans-serif` for Inter. Falls back to `InterVariable` when variable
+  font support is available. Uses `InterDisplay` for headings.
+- Swaps `monospace` for IBM Plex Mono.
+- Per-site. Each stylesheet targets one domain. GitHub gets GitHub selectors.
+  Whatever comes next gets its own file.
+- Hand-tuned selectors for GitHub: CodeMirror internals (`cm-editor`,
+  `cm-scroller`, `cm-content`, `cm-line`, `cm-gutters`), `contenteditable`
+  regions, blob code viewer classes, and React-generated class fragments.
+- Metadata block so Stylus can show the style in its dashboard and check for
+  updates.
+
+## Styles
+
+Currently:
+
+- `github.user.css` — GitHub. Sans, mono, diffs, CodeMirror, blob viewer,
+  markdown code blocks.
+
+More when I get annoyed at other sites.
 
 ## Imports
 
@@ -58,13 +69,11 @@ there. Sitting quietly. Available if you want it.
 ```
 .
 ├── styles/
-│   ├── global.user.css          # Every website, no exceptions
-│   ├── github.user.css          # Just GitHub
-│   └── stackoverflow.user.css   # Just Stack Overflow
+│   └── github.user.css
 └── README.md
 ```
 
-Every `.user.css` file starts with the imports shown above.
+Every `.user.css` file starts with the imports and metadata block shown above.
 
 ## What it looks like
 
@@ -73,27 +82,28 @@ Every `.user.css` file starts with the imports shown above.
 
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 
-span,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-input,
-textarea,
-a,
-button,
-p,
-ul,
-li,
-table,
-.text-italic {
+@-moz-document domain("github.com") {
+  span,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  input,
+  textarea,
+  a,
+  button,
+  p,
+  ul,
+  li,
+  table,
+  .text-italic {
     font-family: Inter, sans-serif;
     font-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
-}
+  }
 
-@supports (font-variation-settings: normal) {
+  @supports (font-variation-settings: normal) {
     span,
     h1,
     h2,
@@ -110,48 +120,69 @@ table,
     li,
     table,
     .text-italic {
-        font-family: InterVariable, sans-serif;
+      font-family: InterVariable, sans-serif;
     }
-}
+  }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: InterDisplay, sans-serif !important;
-}
+  }
 
-html body code,
-html body pre,
-html body kbd,
-html body samp,
-html body tt,
-html body .cm-editor,
-html body .cm-editor *,
-html body .cm-scroller,
-html body .cm-content,
-html body .cm-line,
-html body .cm-gutters,
-html body [contenteditable="true"],
-html body [contenteditable="plaintext-only"],
-html body .blob-code,
-html body .blob-code-inner,
-html body .markdown-body code,
-html body .markdown-body pre,
-html body [class*="CodeLine"] *,
-html body [class*="CodeText"] *,
-html body [class*="BlobContent"] *,
-html body [class*="CodeViewer"] * {
+  html body code,
+  html body pre,
+  html body kbd,
+  html body samp,
+  html body tt,
+  html body .cm-editor,
+  html body .cm-editor *,
+  html body .cm-scroller,
+  html body .cm-content,
+  html body .cm-line,
+  html body .cm-gutters,
+  html body [contenteditable="true"],
+  html body [contenteditable="plaintext-only"],
+  html body .blob-code,
+  html body .blob-code-inner,
+  html body .markdown-body code,
+  html body .markdown-body pre,
+  html body [class*="CodeLine"] *,
+  html body [class*="CodeText"] *,
+  html body [class*="BlobContent"] *,
+  html body [class*="CodeViewer"] * {
     font-family: "IBM Plex Mono", monospace !important;
+  }
 }
 ```
 
 Some selectors above are trimmed. The real file has more — site-specific
-classes I added by hand because GitHub, React, and friends keep inventing new
-class names. If something slips through, open devtools, grab the class, add it
-to the list. That's the whole workflow.
+classes I added by hand because GitHub keeps inventing new class names. If
+something slips through, open devtools, grab the class, add it to the list.
+That's the whole workflow.
+
+## Metadata
+
+Each `.user.css` file starts with a `==UserStyle==` block. Name, version,
+author, license, update URL. Stylus reads it, shows it in the dashboard, and
+uses it for auto-updates.
+
+```css
+/* ==UserStyle==
+@name         GitHub — Inter + IBM Plex Mono
+@namespace    github.com/stagnansi/stylus
+@version      1.0.0
+@description  Inter for sans-serif, IBM Plex Mono for monospace. Hand-tuned for GitHub.
+@author       stagnansi
+@homepageURL  https://github.com/stagnansi/stylus
+@supportURL   https://github.com/stagnansi/stylus/issues
+@updateURL    https://raw.githubusercontent.com/stagnansi/stylus/main/styles/github.user.css
+@license      CC0-1.0
+==/UserStyle== */
+```
 
 ## Customization
 
