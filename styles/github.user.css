@@ -1,0 +1,121 @@
+/* ==UserStyle==
+@name         GitHub — Inter + IBM Plex Mono
+@namespace    github.com/stagnansi/stylus
+@version      1.0.0
+@description  Inter for sans-serif, IBM Plex Mono for monospace. Hand-tuned for GitHub.
+@author       stagnansi
+@homepageURL  https://github.com/stagnansi/stylus
+@supportURL   https://github.com/stagnansi/stylus/issues
+@updateURL    https://raw.githubusercontent.com/stagnansi/stylus/main/styles/github.user.css
+@license      CC0-1.0
+==/UserStyle== */
+
+@import url('https://rsms.me/inter/inter.css');
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+@-moz-document domain("github.com") {
+  span,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  input,
+  textarea,
+  a,
+  button,
+  .pt-2,
+  .prc-Truncate-Truncate-2G1eo,
+  p,
+  .f6,
+  .react-directory-commit-age,
+  ul,
+  li,
+  .text-italic,
+  .tmp-mt-1,
+  .Description-module__Text__srd2u,
+  .Description-module__Box__RFs2C,
+  .prc-components-Label-2mrqP,
+  table {
+    font-family: Inter, sans-serif;
+    font-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
+  }
+
+  @supports (font-variation-settings: normal) {
+    span,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    input,
+    textarea,
+    a,
+    button,
+    .pt-2,
+    .prc-Truncate-Truncate-2G1eo,
+    p,
+    .f6,
+    .react-directory-commit-age,
+    ul,
+    li,
+    .text-italic,
+    .tmp-mt-1,
+    .Description-module__Text__srd2u,
+    .Description-module__Box__RFs2C,
+    .prc-components-Label-2mrqP,
+    table {
+      font-family: InterVariable, sans-serif;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .prc-Truncate-Truncate-2G1eo {
+    font-family: InterDisplay, sans-serif !important;
+  }
+
+  html body code,
+  html body pre,
+  html body kbd,
+  html body samp,
+  html body tt,
+  html body .cm-editor,
+  html body .cm-editor *,
+  html body .cm-scroller,
+  html body .cm-content,
+  html body .cm-content *,
+  html body .cm-line,
+  html body .cm-gutters,
+  html body .cm-gutterElement,
+  html body [contenteditable="true"],
+  html body [contenteditable="plaintext-only"],
+  html body .blob-code,
+  html body .blob-code-inner,
+  html body .blob-code-content,
+  html body .markdown-body code,
+  html body .markdown-body pre,
+  html body [class*="CodeLine"],
+  html body [class*="CodeLine"] *,
+  html body [class*="CodeText"],
+  html body [class*="CodeText"] *,
+  html body [class*="BlobContent"],
+  html body [class*="BlobContent"] *,
+  html body [class*="blob-code"],
+  html body [class*="blob-code"] *,
+  html body [class*="CodeViewer"],
+  html body [class*="CodeViewer"] *,
+  html body [class*="code-viewer"],
+  html body [class*="code-viewer"] *,
+  html body [class*="TextArea-module"],
+  html body [class*="highlight"] * {
+    font-family: "IBM Plex Mono", monospace !important;
+  }
+}
