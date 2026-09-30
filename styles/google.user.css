@@ -1,0 +1,71 @@
+/* ==UserStyle==
+@name         Google — Inter
+@namespace    github.com/stagnansi/stylus
+@version      1.0.0
+@description  Inter for Google Search. No monospace needed.
+@author       stagnansi
+@homepageURL  https://github.com/stagnansi/stylus
+@supportURL   https://github.com/stagnansi/stylus/issues
+@updateURL    https://raw.githubusercontent.com/stagnansi/stylus/main/styles/google.user.css
+@license      CC0-1.0
+==/UserStyle== */
+
+@import url('https://rsms.me/inter/inter.css');
+
+@-moz-document domain("google.com") {
+  .byrV5b,
+  .VwiC3b,
+  .yXK7lf,
+  .p4wth,
+  .r025kc,
+  .Hdw6tb,
+  .iAIpCb,
+  .PZPZlf,
+  .ChPIuf,
+  .YrbPuc,
+  .oatEtb,
+  .gUbm5e,
+  .B4GxFc,
+  .Fx4vi,
+  .wHYlTd,
+  .ZYHQ7e,
+  .EyBRub,
+  .XhWQv,
+  .qd6zO,
+  .ApHyTb {
+    font-family: Inter, sans-serif;
+    font-feature-settings: 'liga' 1, 'calt' 1, 'zero' 1, 'tnum' 1;
+    /* fix for Chrome */
+  }
+
+  @supports (font-variation-settings: normal) {
+    .byrV5b,
+    .VwiC3b,
+    .yXK7lf,
+    .p4wth,
+    .r025kc,
+    .Hdw6tb,
+    .iAIpCb,
+    .PZPZlf,
+    .ChPIuf,
+    .YrbPuc,
+    .oatEtb,
+    .gUbm5e,
+    .B4GxFc,
+    .Fx4vi,
+    .wHYlTd,
+    .ZYHQ7e,
+    .EyBRub,
+    .XhWQv,
+    .qd6zO,
+    .ApHyTb {
+      font-family: InterVariable, sans-serif;
+    }
+  }
+
+  .PZPZlf,
+  .ssJ7i,
+  .xgAzOe {
+    font-family: InterDisplay, sans-serif !important;
+  }
+}
