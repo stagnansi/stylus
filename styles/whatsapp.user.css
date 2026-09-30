@@ -1,0 +1,48 @@
+/* ==UserStyle==
+@name         WhatsApp Web — Inter + IBM Plex Mono
+@namespace    github.com/stagnansi/stylus
+@version      1.0.0
+@description  Inter for WhatsApp Web. IBM Plex Mono for code.
+@author       stagnansi
+@homepageURL  https://github.com/stagnansi/stylus
+@supportURL   https://github.com/stagnansi/stylus/issues
+@updateURL    https://raw.githubusercontent.com/stagnansi/stylus/main/styles/whatsapp.user.css
+@license      CC0-1.0
+==/UserStyle== */
+
+@import url('https://rsms.me/inter/inter.css');
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+@-moz-document domain("web.whatsapp.com") {
+  .xuxw1ft,
+  .x6ikm8r,
+  .x10wlt62,
+  .xlyipyv,
+  .x78zum5 {
+    font-family: Inter, sans-serif;
+    font-feature-settings: 'liga' 1, 'calt' 1;
+    /* fix for Chrome */
+  }
+
+  .xjbqb8w {
+    /* keeps status timestamps from jittering — tabular numerals */
+    font-feature-settings: 'liga' 1, 'calt' 1, 'tnum' 1;
+  }
+
+  @supports (font-variation-settings: normal) {
+    .xuxw1ft,
+    .x6ikm8r,
+    .x10wlt62,
+    .xlyipyv,
+    .x78zum5 {
+      font-family: InterVariable, sans-serif;
+    }
+  }
+
+  code,
+  code span {
+    font-family: 'IBM Plex Mono', monospace !important;
+    font-weight: 500;
+  }
+}
