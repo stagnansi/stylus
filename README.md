@@ -27,14 +27,31 @@ wrote one stylesheet and let it handle the rest.
 - Includes some hand-tuned site-specific class selectors. Because some sites
   just won't cooperate.
 
+## Imports
+
+Every stylesheet starts with these. They pull the fonts in so you don't have
+to install anything locally.
+
+```css
+@import url('https://rsms.me/inter/inter.css');
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+```
+
+The first one is Inter from rsms.me. The canonical source. Gets you
+`InterVariable` and `InterDisplay`.
+
+The second is IBM Plex Mono from Google Fonts. All weights, all italics. It
+also pulls IBM Plex Sans, which the styles don't currently use. It's just
+there. Sitting quietly. Available if you want it.
+
 ## How to use it
 
 1. Install Stylus in your browser. Chrome, Firefox, Edge, Opera. Pick your
    poison.
-2. Make sure Inter and IBM Plex Mono are installed on your system. Or don't.
-   See "Font loading" below.
-3. Open a `.user.css` file from this repo. Click Raw. Stylus will ask if you
+2. Open a `.user.css` file from this repo. Click Raw. Stylus will ask if you
    want to install it. Say yes.
+3. That's it. The imports handle the fonts. No local installation needed.
 
 ## Repo structure
 
@@ -44,14 +61,18 @@ wrote one stylesheet and let it handle the rest.
 │   ├── global.user.css          # Every website, no exceptions
 │   ├── github.user.css          # Just GitHub
 │   └── stackoverflow.user.css   # Just Stack Overflow
-├── snippets/
-│   └── font-face-import.css     # Google Fonts, if you're into that
 └── README.md
 ```
+
+Every `.user.css` file starts with the imports shown above.
 
 ## What it looks like
 
 ```css
+@import url('https://rsms.me/inter/inter.css');
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
 span,
 h1,
 h2,
@@ -131,18 +152,6 @@ Some selectors above are trimmed. The real file has more — site-specific
 classes I added by hand because GitHub, React, and friends keep inventing new
 class names. If something slips through, open devtools, grab the class, add it
 to the list. That's the whole workflow.
-
-## Font loading
-
-If you don't want to install fonts locally, add this to the top of your
-stylesheet:
-
-```css
-@import url('https://fonts.googleapis.com/css2?family=Inter&family=IBM+Plex+Mono&display=swap');
-```
-
-I don't. But you can. Variable font (`InterVariable`) and `InterDisplay` need
-to be installed locally anyway.
 
 ## Customization
 
