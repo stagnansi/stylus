@@ -1,0 +1,43 @@
+/* ==UserStyle==
+@name         Instagram — Inter
+@namespace    github.com/stagnansi/stylus
+@version      1.0.0
+@description  Inter for Instagram. No monospace needed.
+@author       stagnansi
+@homepageURL  https://github.com/stagnansi/stylus
+@supportURL   https://github.com/stagnansi/stylus/issues
+@updateURL    https://raw.githubusercontent.com/stagnansi/stylus/main/styles/instagram.user.css
+@license      CC0-1.0
+==/UserStyle== */
+
+@import url('https://rsms.me/inter/inter.css');
+
+@-moz-document domain("instagram.com") {
+  a,
+  span,
+  ._ap3a,
+  .x1lliihq,
+  .x193iq5w,
+  .x1i10hfl,
+  .x1i0vuye {
+    font-family: Inter, sans-serif;
+    font-feature-settings: 'liga' 1, 'calt' 1, 'zero' 1;
+    /* fix for Chrome */
+  }
+
+  @supports (font-variation-settings: normal) {
+    a,
+    span,
+    ._ap3a,
+    .x1lliihq,
+    .x193iq5w,
+    .x1i10hfl,
+    .x1i0vuye {
+      font-family: InterVariable, sans-serif;
+    }
+  }
+
+  /* {
+    font-family: InterDisplay, sans-serif !important;
+  } */
+}
