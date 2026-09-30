@@ -1,0 +1,63 @@
+/* ==UserStyle==
+@name         Google Play — Inter
+@namespace    github.com/stagnansi/stylus
+@version      1.0.0
+@description  Inter for Google Play. No monospace needed.
+@author       stagnansi
+@homepageURL  https://github.com/stagnansi/stylus
+@supportURL   https://github.com/stagnansi/stylus/issues
+@updateURL    https://raw.githubusercontent.com/stagnansi/stylus/main/styles/google-play.user.css
+@license      CC0-1.0
+==/UserStyle== */
+
+@import url('https://rsms.me/inter/inter.css');
+
+@-moz-document domain("play.google.com") {
+  :root,
+  body,
+  html,
+  .bARER,
+  .SfzRHd,
+  .DdYX5,
+  .wMUdtb,
+  .w2kbF,
+  .sT93pb,
+  .KZR7o,
+  .ePXqnb,
+  .jILTFe,
+  .JzwBgb,
+  .EHUI5b,
+  .bp9Aid,
+  .AJTPZc,
+  .NC0Ppb,
+  .kMqehf,
+  .AfwdI {
+    font-family: Inter, sans-serif;
+    font-feature-settings: 'liga' 1, 'calt' 1, 'zero' 1, 'ss01' 1;
+    /* fix for Chrome */
+  }
+
+  @supports (font-variation-settings: normal) {
+    :root,
+    body,
+    html,
+    .bARER,
+    .SfzRHd,
+    .DdYX5,
+    .wMUdtb,
+    .w2kbF,
+    .sT93pb,
+    .KZR7o,
+    .ePXqnb,
+    .jILTFe,
+    .JzwBgb,
+    .EHUI5b,
+    .bp9Aid,
+    .AJTPZc,
+    .NC0Ppb,
+    .kMqehf,
+    .AfwdI {
+      font-family: InterVariable, sans-serif;
+    }
+  }
+}
